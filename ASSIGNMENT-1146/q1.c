@@ -36,4 +36,26 @@ int main() {
     long long result = 0;
 
     printf("Sequential Array Sum over %d runs:\n", NUM_RUNS);
+        // Perform the sum NUM_RUNS times and measure execution time
+        for (int run = 0; run < NUM_RUNS; run++) {
+            clock_t start = clock(); // Start timing
+    
+            result = sequential_sum(array, ARRAY_SIZE); // Sequential sum calculation
+    
+            clock_t end = clock();   // End timing
+            double time_taken = (double)(end - start) / CLOCKS_PER_SEC;
+    
+            total_time += time_taken;
+    
+            printf("Run %d: Sum = %lld, Time = %f seconds\n", run + 1, result, time_taken);
+        }
+    
+        // Calculate and print the average execution time
+        double avg_time = total_time / NUM_RUNS;
+        printf("\nAverage execution time over %d runs: %f seconds\n", NUM_RUNS, avg_time);
+    
+        free(array); // Free the allocated memory
+        return 0;
+    }
+    
 

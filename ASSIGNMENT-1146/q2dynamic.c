@@ -17,3 +17,20 @@ int main() {
     }
 
     omp_set_num_threads(NUM_THREADS);
+    // Execute parallel region 10 times for averaging
+    for (j = 0; j < 10; j++) {
+        sum = 0.0;
+        start = omp_get_wtime();
+
+        // Parallel loop with dynamic scheduling and reduction on sum
+        #pragma omp parallel for reduction(+:sum) schedule(dynamic, 1000)
+        for (i = 0; i < N; i++) {
+            sum += arr[i];
+        }
+
+        end = omp_get_wtime();
+        time = end - start;
+        avg_time += time;
+
+        printf("Run %d: Sum = %.2f, Time = %f sec\n", j + 1, sum, time);
+    }

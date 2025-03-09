@@ -34,3 +34,11 @@ int main() {
 
         printf("Run %d: Sum = %.2f, Time = %f sec\n", j + 1, sum, time);
     }
+    // Compute and display average execution time
+    avg_time /= 10.0;
+    printf("\n[DYNAMIC SCHEDULING] Average Time over 10 runs = %f sec\n", avg_time);
+
+    // Free allocated memory
+    free(arr);
+    return 0;
+}

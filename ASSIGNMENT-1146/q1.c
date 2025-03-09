@@ -20,3 +20,20 @@ long long sequential_sum(int *arr, int size) {
     }
     return sum;
 }
+int main() {
+    // Allocate memory for the array
+    int *array = (int *)malloc(sizeof(int) * ARRAY_SIZE);
+    if (array == NULL) {
+        printf("Memory allocation failed!\n");
+        return -1;
+    }
+
+    // Initialize array with random numbers
+    initialize_array(array, ARRAY_SIZE);
+
+    // Variables to store total execution time and result
+    double total_time = 0.0;
+    long long result = 0;
+
+    printf("Sequential Array Sum over %d runs:\n", NUM_RUNS);
+
